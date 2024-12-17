@@ -18,16 +18,18 @@ class Song {
   String image;
   int duration;
 
-  Song({required this.id,
-    required this.title,
-    required this.album,
-    required this.artist,
-    required this.source,
-    required this.image,
-    required this.duration});
+  Song(
+      {required this.id,
+      required this.title,
+      required this.album,
+      required this.artist,
+      required this.source,
+      required this.image,
+      required this.duration});
 
-  factory Song.fromJson(Map<String, dynamic> map){
-    return Song(id: map['id'],
+  factory Song.fromJson(Map<String, dynamic> map) {
+    return Song(
+        id: map['id'],
         title: map['title'],
         album: map['album'],
         artist: map['artist'],
@@ -43,4 +45,9 @@ class Song {
 
   @override
   int get hashCode => id.hashCode;
+
+  @override
+  String toString() {
+    return 'Song{id: $id, title: $title, album: $album, artist: $artist, source: $source, image: $image, duration: $duration}';
+  }
 }

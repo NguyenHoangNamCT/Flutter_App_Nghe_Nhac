@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:music_app/data/repository/repository.dart';
 
-void main() {
+import 'data/model/Song.dart';
 
+void main() async{
+  var repository = DefaultRepository();
+  var songs = await repository.loadData() as List<Song>;
+  for(var s in songs){
+    debugPrint(s.toString());
+  }
 }
 
 class MusicApp extends StatelessWidget {
