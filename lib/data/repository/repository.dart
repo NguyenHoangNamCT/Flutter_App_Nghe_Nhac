@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:music_app/data/source/source.dart';
 
 import '../model/Song.dart';
@@ -14,10 +15,11 @@ class DefaultRepository implements Repository {
   @override
   Future<List<Song>?> loadData() async {
     List<Song> songs = [];
-    await _remoteDataSource.loadData().then((remoteSong) {
+    await _remoteDataSource.loadData().then((remoteSong) async {
       if(remoteSong == null){
-        _localDataSource.loadData().then((localSong){
+        await _localDataSource.loadData().then((localSong){
           if(localSong != null){
+            debugPrint("Hello i load at local");
             songs.addAll(localSong);
           }
         });
